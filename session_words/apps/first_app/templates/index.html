@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <title>Session Words</title>
+    </head>
+    <body>
+        <div style="display: inline-block;position: relative;width: 50%; height:80%; left: 15px;">
+            <h1>Add a new word</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="new_word" id="new_word">
+            </form>
+            <br>
+            <h4>Choose color</h4>
+            <form action="/session_words/post_word" method="POST"> 
+                {% csrf_token %}
+                <input type="radio" name="color" value="red"> <font color="red">Red</font> <br>
+                <input type="radio" name="color" value="green"> <font color="green">Green</font> <br>
+                <input type="radio" name="color" value="blue"> <font color="blue">Blue</font> <br>
+            </form><br>
+            <form>
+                {% csrf_token %}
+                <input type="checkbox" name="font" value="Big Font"> show in BIG fonts!
+            </form><br>
+            <form action="/session_words/post_word" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Add to Session" name="save" style="background-color:rgb(35, 211, 241); box-shadow:3px 4px; border: solid 2px;">
+            </form>
+        </div>     
+
+
+
+
+        <hr noshade style="border: 2px solid black;width: 510px;transform: rotate(90deg);margin: 0 auto;">
+
+
+        
+
+            
+        <div style="display: inline-block;position: fixed; top: 20px; right: -300px; width: 40%; height:70%">
+            <form action="/clear">
+                    {% csrf_token %}
+                <input type="reset" value="Clear Session" name="clear_session" style="background-color:rgb(240, 88, 101);box-shadow: 3px 4px;border: solid 2px;">
+            </form>
+            
+        </div>
+        <div style="display: inline-block;position:relative;left: 700px; bottom: 220px ">
+           
+                {{request.session.new_wo}}
+            
+            <p>asdfsadfsdkyjhgfgtytuylkytyh</p>
+        </div>
+    </body>
+</html>
